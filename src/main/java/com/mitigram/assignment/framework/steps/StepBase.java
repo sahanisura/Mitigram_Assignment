@@ -1,4 +1,4 @@
-package com.mitigram.assignment.framework.base;
+package com.mitigram.assignment.framework.steps;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.asserts.SoftAssert;

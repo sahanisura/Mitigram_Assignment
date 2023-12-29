@@ -1,6 +1,5 @@
 package com.mitigram.assignment.framework.pages;
 
-import com.mitigram.assignment.framework.base.PageBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

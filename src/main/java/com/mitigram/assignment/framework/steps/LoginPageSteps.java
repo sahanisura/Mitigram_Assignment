@@ -1,6 +1,5 @@
 package com.mitigram.assignment.framework.steps;
 
-import com.mitigram.assignment.framework.base.StepBase;
 import com.mitigram.assignment.framework.pages.LoginPage;
 
 public class LoginPageSteps extends StepBase {

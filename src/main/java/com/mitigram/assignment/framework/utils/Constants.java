@@ -24,7 +24,9 @@ public class Constants {
             properties.getProperty("EDGE_DRIVER_LOCATION")).orElse("");
     public static final String GECKO_DRIVER_LOCATION = Optional.ofNullable(
             properties.getProperty("GECKO_DRIVER_LOCATION")).orElse("");
-    public static final int EXPLICIT_WAIT_TIMEOUT = Integer.parseInt(Optional.ofNullable(
-            properties.getProperty("EXPLICIT_WAIT_TIMEOUT")).orElse("20"));
+    public static final int WAIT_TIMEOUT_IN_SECONDS = Integer.parseInt(Optional.ofNullable(
+            properties.getProperty("WAIT_TIMEOUT_IN_SECONDS")).orElse("20"));
+    public static final int POLLING_INTERVAL_IN_MILLISECONDS = Integer.parseInt(Optional.ofNullable(
+            properties.getProperty("POLLING_INTERVAL_IN_MILLISECONDS")).orElse("100"));
 
 }

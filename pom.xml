@@ -55,7 +55,7 @@
                 <version>3.2.3</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>src/test/resources/FullSuite.xml</suiteXmlFile>
+                        <suiteXmlFile>src/test/resources/${test.suite}.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>

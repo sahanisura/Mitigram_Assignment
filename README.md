@@ -9,8 +9,6 @@ Login flow of the Mitigram portal and the Careers page.
 ## Folder Structure
 ![](docs/folder_structure.png)  
 `com.mitigram.assignment.framework` is the root package of the core components of the framework.
-### base
-This package contains the base classes.
 ### pages
 This package contains the Page Classes following the 
 Page Object Model (POM) design pattern.
@@ -41,21 +39,26 @@ Run the command in terminal `mvn -v`. It should display the following output if 
 `OS name: "windows 10", version: "10.0", arch: "amd64", family: "windows"`
 ## Configure Test Suite (Before Run)
 Open the file `src/main/resources/config.properties`.  
-Update the properties in the file as required.
+Update the Driver location
+Ex: CHROME_DRIVER_LOCATION={@your path to chrome driver}\chromedriver.exe
 ## Build and Run Locally
 
 #### Build Test Suite
 Run the command `mvn clean install -DskipTests` in a terminal from the project root directory to build the project.
 #### Execute Testcases
 ##### Execute Full Suite
-Run the command `mvn clean test -DsuiteXmlFile=src/test/resources/TestParallelExecution.xml` 
+Run the command `mvn test -Dtest.suite=FullSuite` 
 in a terminal from the project root directory.
 ##### Execute Full Suite parallel with two browsers. 
-Run the command `mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/TestParallelExecution.xml` 
-in a terminal from the project root directory. You have to update
-browser drivers location in the `src/main/resources/config.properties` file and 
+Run the command `mvn test -Dtest.suite=TestParallelExecution` 
+in a terminal from the project root directory. You have to update the 
 value attribute of the parameter tag in the 
 `src/test/resources/TestParallelExecution.xml` file according to your browsers.
+##### Execute specific test cases.
+Run the command `mvn test -Dtest.suite=SpecificTestsExecution`
+in a terminal from the project root directory. You have to update the value 
+attribute of the parameter tag in the
+`src/test/resources/TestParallelExecution.xml` file according to your browser.
 ##### View Test Results Report
 Open the file `target/surefire-reports/index.html` in a web browser to view the HTML test results report.
 ##### View Test Logs

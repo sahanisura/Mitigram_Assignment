@@ -1,6 +1,5 @@
-package com.mitigram.assignment.framework.base;
+package com.mitigram.assignment.framework.pages;
 
-import com.mitigram.assignment.framework.utils.Constants;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -10,20 +9,22 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.function.Function;
+
+import static com.mitigram.assignment.framework.utils.Constants.POLLING_INTERVAL_IN_MILLISECONDS;
+import static com.mitigram.assignment.framework.utils.Constants.WAIT_TIMEOUT_IN_SECONDS;
 
 public class PageBase {
-    protected final WebDriverWait wait;
+    private final WebDriverWait wait;
     protected final WebDriver driver;
 
     public PageBase(WebDriver driver) {
         PageFactory.initElements(driver, this);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(Constants.EXPLICIT_WAIT_TIMEOUT));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT_IN_SECONDS));
         this.driver = driver;
     }
 
     protected WebElement waitUntilVisibilityOfElement(WebElement webElement, By locator) {
-        Wait<WebDriver> wait1 = new FluentWait<>(driver);
-        wait1.until(ExpectedConditions.visibilityOf(webElement));
         return wait.until(ExpectedConditions.visibilityOf(webElement.findElement(locator)));
     }
 
@@ -35,13 +36,17 @@ public class PageBase {
         wait.until(ExpectedConditions.invisibilityOfAllElements(webElementList));
     }
 
-    protected WebElement fluentWaitPresenceOfElement(By locator) {
-        Wait<WebDriver> fluentWait = new FluentWait<>(driver)
-                .withTimeout(Duration.ofSeconds(10))
-                .pollingEvery(Duration.ofMillis(50))
-                .ignoring(TimeoutException.class);
+    protected WebElement waitUntilPresenceOfElement(Function<WebDriver, WebElement> customFunction) {
+        /*Use this if you are dealing with dynamic content that might take unpredictable
+        amounts of time to load or if you need to create a custom condition for waiting */
 
-        return fluentWait.until(ExpectedConditions.presenceOfElementLocated(locator));
+        Wait<WebDriver> fluentWait = new FluentWait<>(driver)
+                .withTimeout(Duration.ofSeconds(WAIT_TIMEOUT_IN_SECONDS))
+                .pollingEvery(Duration.ofMillis(POLLING_INTERVAL_IN_MILLISECONDS))
+                .ignoring(NoSuchElementException.class)
+                .ignoring(StaleElementReferenceException.class);
+
+        return fluentWait.until(customFunction);
     }
 
     protected Object executeJavaScript(String script, WebElement webElement) {
