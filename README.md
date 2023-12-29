@@ -7,7 +7,7 @@ Login flow of the Mitigram portal and the Careers page.
 * Linux
 * Mac 
 ## Folder Structure
-![](docs/folder_structure.png)  
+![](docs/folder_structure.PNG)  
 `com.mitigram.assignment.framework` is the root package of the core components of the framework.
 ### pages
 This package contains the Page Classes following the 
