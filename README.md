@@ -48,7 +48,7 @@ Run the command `mvn clean install -DskipTests` in a terminal from the project r
 #### Execute Testcases
 ##### Execute Full Suite
 Run the command `mvn test -Dtest.suite=FullSuite` 
-in a terminal from the project root directory.
+in a terminal from the project root directory considering **FullSuite** is the name of the test suite xml file in `src/test/resources` Ex: **FullSuite.xml**.
 ##### Execute Full Suite parallel with two browsers. 
 Run the command `mvn test -Dtest.suite=TestParallelExecution` 
 in a terminal from the project root directory. You have to update the 
