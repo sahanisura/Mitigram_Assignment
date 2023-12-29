@@ -1,14 +1,12 @@
 package com.mitigram.assignment.framework.pages;
 
-import org.openqa.selenium.JavascriptExecutor;
+import com.mitigram.assignment.framework.base.PageBase;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class NavigationMenuPage {
-    private final WebDriver driver;
+public class NavigationMenuPage extends PageBase {
     @FindBy(css = "ul.g-toplevel")
     private WebElement navigationMenu;
     @FindBy(xpath = "//span[@class='g-menu-item-title' and text()='Solutions']")
@@ -17,8 +15,7 @@ public class NavigationMenuPage {
     private WebElement solutionsMenuDropDown;
 
     public NavigationMenuPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-        this.driver = driver;
+        super(driver);
     }
 
     public void moveMousePointerToSolutionsMenuItem() {
@@ -38,7 +35,6 @@ public class NavigationMenuPage {
                         "}                                          " +
                         "return false;                              ";
 
-        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-        return (boolean) jsExecutor.executeScript(script, navigationMenu);
+        return (boolean) executeJavaScript(script, navigationMenu);
     }
 }

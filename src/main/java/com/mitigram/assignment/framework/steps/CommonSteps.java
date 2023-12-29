@@ -1,25 +1,15 @@
 package com.mitigram.assignment.framework.steps;
 
-import com.mitigram.assignment.framework.managers.ConfigurationManager;
+import com.mitigram.assignment.framework.base.StepBase;
 import com.mitigram.assignment.framework.pages.NavigationMenuPage;
 import com.mitigram.assignment.framework.pages.HomePage;
-import org.openqa.selenium.WebDriver;
-import org.testng.asserts.SoftAssert;
+import com.mitigram.assignment.framework.utils.Constants;
 
-import static com.mitigram.assignment.framework.utils.TestContext.*;
-
-public class CommonSteps {
-    private final SoftAssert softAssert;
-    private final WebDriver driver;
-
-    public CommonSteps() {
-        this.driver = getDriver();
-        this.softAssert = getSoftAssert();
-    }
+public class CommonSteps extends StepBase {
 
     public void navigateToPage(String pageName) {
         if (pageName.equalsIgnoreCase("home")) {
-            driver.get(ConfigurationManager.getProperty("SITE_URL"));
+            driver.get(Constants.SITE_URl);
         } else if (pageName.equalsIgnoreCase("login")) {
             HomePage homePage = new HomePage(driver);
             homePage.clickLoginButton();

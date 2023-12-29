@@ -1,22 +1,18 @@
 package com.mitigram.assignment.framework.pages;
 
+import com.mitigram.assignment.framework.base.PageBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class CareersPage {
-    private final WebDriverWait wait;
+public class CareersPage extends PageBase {
     private String clickedPositionName;
     @FindBy(css = "#g-header h1")
     private WebElement heading;
@@ -30,8 +26,7 @@ public class CareersPage {
     private List<WebElement> allOpenPositions;
 
     public CareersPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        super(driver);
     }
 
     public String getHeadingText() {
@@ -74,8 +69,7 @@ public class CareersPage {
 
     public String getJobSummaryText() {
         checkClickedPositionNameNotNull();
-        return wait.until(ExpectedConditions.visibilityOf(getPosition(clickedPositionName).findElement(By.tagName("p"))))
-                .getText();
+        return waitUntilVisibilityOfElement(getPosition(clickedPositionName), By.tagName("p")).getText();
     }
 
     public void clickLearnMoreButton() {
@@ -112,6 +106,6 @@ public class CareersPage {
                 .filter(webElement -> !webElement.getAttribute("data-tag").equalsIgnoreCase(filterCriterion))
                 .toList();
 
-        wait.until(ExpectedConditions.invisibilityOfAllElements(positionsNeedToBeInvisible));
+        waitUntilInvisibilityOfAllElements(positionsNeedToBeInvisible);
     }
 }

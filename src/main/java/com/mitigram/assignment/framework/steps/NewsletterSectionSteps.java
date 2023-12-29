@@ -1,21 +1,14 @@
 package com.mitigram.assignment.framework.steps;
 
+import com.mitigram.assignment.framework.base.StepBase;
 import com.mitigram.assignment.framework.pages.NewsletterPage;
-import org.testng.asserts.SoftAssert;
 
-import static com.mitigram.assignment.framework.utils.TestContext.*;
-
-public class NewsletterSectionSteps {
-    private final SoftAssert softAssert;
+public class NewsletterSectionSteps extends StepBase {
     private NewsletterPage newsletterPage;
 
-    public NewsletterSectionSteps() {
-        this.softAssert = getSoftAssert();
-        initPages();
-    }
-
+    @Override
     protected void initPages() {
-        newsletterPage = new NewsletterPage(getDriver());
+        newsletterPage = new NewsletterPage(driver);
     }
 
     public void enterNewsletterEmail(String email) {

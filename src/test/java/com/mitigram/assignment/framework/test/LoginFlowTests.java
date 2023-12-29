@@ -44,7 +44,7 @@ public class LoginFlowTests extends TestBase {
         loginPageSteps.enterPassword("validPassword");
         loginPageSteps.clickLoginButton();
         //Validation should be added to verify the successful login message or page.
-        //assertAll(softAssert);
+        //assertAll();
     }
 
     @Test

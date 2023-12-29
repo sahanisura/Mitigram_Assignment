@@ -1,23 +1,16 @@
 package com.mitigram.assignment.framework.steps;
 
+import com.mitigram.assignment.framework.base.StepBase;
 import com.mitigram.assignment.framework.pages.CareersPage;
-import org.testng.asserts.SoftAssert;
-
-import static com.mitigram.assignment.framework.utils.TestContext.*;
 
 import java.util.Map;
 
-public class CareersPageSteps {
-    private final SoftAssert softAssert;
+public class CareersPageSteps extends StepBase {
     protected CareersPage careersPage;
 
-    public CareersPageSteps() {
-        this.softAssert = getSoftAssert();
-        initPages();
-    }
-
+    @Override
     protected void initPages() {
-        careersPage = new CareersPage(getDriver());
+        careersPage = new CareersPage(driver);
     }
 
     public void validateHeadingText(String expectedHeadingText) {

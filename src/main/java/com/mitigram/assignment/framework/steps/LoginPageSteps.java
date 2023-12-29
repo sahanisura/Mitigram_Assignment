@@ -1,22 +1,12 @@
 package com.mitigram.assignment.framework.steps;
 
+import com.mitigram.assignment.framework.base.StepBase;
 import com.mitigram.assignment.framework.pages.LoginPage;
-import org.openqa.selenium.WebDriver;
-import org.testng.asserts.SoftAssert;
 
-import static com.mitigram.assignment.framework.utils.TestContext.*;
-
-public class LoginPageSteps {
-    private final SoftAssert softAssert;
-    private final WebDriver driver;
+public class LoginPageSteps extends StepBase {
     private LoginPage loginPage;
 
-    public LoginPageSteps() {
-        this.softAssert = getSoftAssert();
-        this.driver = getDriver();
-        initPages();
-    }
-
+    @Override
     protected void initPages() {
         loginPage = new LoginPage(driver);
     }

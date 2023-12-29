@@ -1,12 +1,12 @@
 package com.mitigram.assignment.framework.pages;
 
+import com.mitigram.assignment.framework.base.PageBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class NewsletterPage {
+public class NewsletterPage extends PageBase {
     @FindBy(id = "newsletterUserMail")
     private WebElement newsletterEmailTxt;
     @FindBy(className = "bfCustomSubmitButton")
@@ -17,7 +17,7 @@ public class NewsletterPage {
     private WebElement newsletterMsgReceivedNotification;
 
     public NewsletterPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
+        super(driver);
     }
 
     public void clickNewsletterSubmitButton() {

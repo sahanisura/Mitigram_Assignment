@@ -1,21 +1,14 @@
 package com.mitigram.assignment.framework.steps;
 
+import com.mitigram.assignment.framework.base.StepBase;
 import com.mitigram.assignment.framework.pages.ForgotPasswordPage;
-import org.testng.asserts.SoftAssert;
 
-import static com.mitigram.assignment.framework.utils.TestContext.*;
-
-public class ForgotPasswordPageSteps {
-    private final SoftAssert softAssert;
+public class ForgotPasswordPageSteps extends StepBase {
     private ForgotPasswordPage forgotPasswordPage;
 
-    public ForgotPasswordPageSteps() {
-        this.softAssert = getSoftAssert();
-        initPages();
-    }
-
+    @Override
     protected void initPages() {
-        forgotPasswordPage = new ForgotPasswordPage(getDriver());
+        forgotPasswordPage = new ForgotPasswordPage(driver);
     }
 
     public void validateHeaderText(String expectedHeaderText) {

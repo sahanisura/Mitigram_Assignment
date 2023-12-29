@@ -1,11 +1,11 @@
 package com.mitigram.assignment.framework.pages;
 
+import com.mitigram.assignment.framework.base.PageBase;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class ForgotPasswordPage {
+public class ForgotPasswordPage extends PageBase {
     @FindBy(tagName = "h4")
     private WebElement heading;
     @FindBy(id = "Email")
@@ -20,7 +20,7 @@ public class ForgotPasswordPage {
     private WebElement backToLoginLnk;
 
     public ForgotPasswordPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
+        super(driver);
     }
 
     public String getHeadingText() {

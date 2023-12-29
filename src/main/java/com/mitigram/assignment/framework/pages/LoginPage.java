@@ -1,17 +1,12 @@
 package com.mitigram.assignment.framework.pages;
 
+import com.mitigram.assignment.framework.base.PageBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-
-public class LoginPage {
-    WebDriverWait wait;
+public class LoginPage extends PageBase {
     @FindBy(className = "logo")
     private WebElement logo;
     @FindBy(id = "Email")
@@ -36,8 +31,7 @@ public class LoginPage {
     private WebElement contactUs;
 
     public LoginPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        super(driver);
     }
 
     public boolean isLogoVisible() {
@@ -113,7 +107,7 @@ public class LoginPage {
     }
 
     public String getErrorMessage() {
-        return wait.until(ExpectedConditions.visibilityOf(errorLbl)).getText();
+        return waitUntilVisibilityOfElement(errorLbl).getText();
     }
 
     public String getEmailFieldText() {

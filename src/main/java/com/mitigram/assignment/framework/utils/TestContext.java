@@ -1,6 +1,5 @@
 package com.mitigram.assignment.framework.utils;
 
-import com.mitigram.assignment.framework.managers.ConfigurationManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -47,17 +46,17 @@ public class TestContext {
         switch (browser) {
             case "chrome":
                 System.setProperty("webdriver.chrome.driver",
-                        ConfigurationManager.getProperty("CHROME_DRIVER_LOCATION"));
+                        Constants.CHROME_DRIVER_LOCATION);
                 driver = new ChromeDriver();
                 break;
             case "firefox":
                 System.setProperty("webdriver.gecko.driver",
-                        ConfigurationManager.getProperty("GECKO_DRIVER_LOCATION"));
+                        Constants.GECKO_DRIVER_LOCATION);
                 driver = new FirefoxDriver();
                 break;
             case "edge":
                 System.setProperty("webdriver.edge.driver",
-                        ConfigurationManager.getProperty("EDGE_DRIVER_LOCATION"));
+                        Constants.EDGE_DRIVER_LOCATION);
                 driver = new EdgeDriver();
                 break;
             // Add cases for other browsers if needed
