@@ -1,7 +1,6 @@
 # Mitigram Assignment
 ## Introduction
-This repository contains the Selenium test scenarios to test the 
-Login flow of the Mitigram portal and the Careers page.
+This repository contains the Selenium test scenarios to test the Login flow of the Mitigram portal, the Careers page, and the Newsletter section.
 ## Supported Operating Systems
 * Windows
 * Linux
