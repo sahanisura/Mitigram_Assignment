@@ -24,29 +24,33 @@ public class PageBase {
         this.driver = driver;
     }
 
-    protected WebElement waitUntilVisibilityOfElement(WebElement webElement, By locator) {
-        return wait.until(ExpectedConditions.visibilityOf(webElement.findElement(locator)));
+    protected WebElement waitUntilElementIsLocatedAndDisplayed(By locator) {
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
-    protected WebElement waitUntilVisibilityOfElement(WebElement webElement) {
+    protected WebElement waitUntilElementIsDisplayed(WebElement webElement) {
         return wait.until(ExpectedConditions.visibilityOf(webElement));
     }
 
-    protected void waitUntilInvisibilityOfAllElements(List<WebElement> webElementList) {
+    protected WebElement waitUntilChildElementIsDisplayed(WebElement webElement, By locator) {
+        return wait.until(ExpectedConditions.visibilityOf(webElement.findElement(locator)));
+    }
+
+    protected void waitUntilElementsAreNotDisplayed(List<WebElement> webElementList) {
         wait.until(ExpectedConditions.invisibilityOfAllElements(webElementList));
     }
 
-    protected WebElement waitUntilPresenceOfElement(Function<WebDriver, WebElement> customFunction) {
+    protected WebElement waitUntilForTheCustomCondition(Function<WebDriver, WebElement> customFunction) {
         /*Use this if you are dealing with dynamic content that might take unpredictable
-        amounts of time to load or if you need to create a custom condition for waiting */
+        amounts of time to load and if you need to create a custom condition for waiting */
 
-        Wait<WebDriver> fluentWait = new FluentWait<>(driver)
+        Wait<WebDriver> wait = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(WAIT_TIMEOUT_IN_SECONDS))
                 .pollingEvery(Duration.ofMillis(POLLING_INTERVAL_IN_MILLISECONDS))
                 .ignoring(NoSuchElementException.class)
                 .ignoring(StaleElementReferenceException.class);
 
-        return fluentWait.until(customFunction);
+        return wait.until(customFunction);
     }
 
     protected Object executeJavaScript(String script, WebElement webElement) {

@@ -16,18 +16,19 @@ public class LoginPage extends PageBase {
     private WebElement loginBtn;
     @FindBy(linkText = "Forgot your password?")
     private WebElement forgetYourPasswordLnk;
-    @FindBy(className = "noty_body")
-    private WebElement errorLbl;
     @FindBy(css = "#app-store-badges [alt=\"Download on the App Store\"]")
-    private WebElement appStoreBadge;
+    private WebElement appStoreLnk;
     @FindBy(css = "#app-store-badges [alt=\"Get it on Google Play\"]")
-    private WebElement playStoreBadge;
+    private WebElement playStoreLnk;
     @FindBy(className = "registration-call")
     private WebElement createAnAccountLbl;
     @FindBy(className = "notifications")
-    private WebElement cookiesDescription;
+    private WebElement cookiesDescriptionLbl;
     @FindBy(linkText = "Contact us")
-    private WebElement contactUs;
+    private WebElement contactUsLnk;
+
+    //Use 'By' locators for dynamically loaded elements
+    private final By errorLbl = By.className("noty_body");
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -73,12 +74,12 @@ public class LoginPage extends PageBase {
         return forgetYourPasswordLnk.getText();
     }
 
-    public boolean isAppStoreBadgeVisible() {
-        return appStoreBadge.isDisplayed();
+    public boolean isAppStoreLinkVisible() {
+        return appStoreLnk.isDisplayed();
     }
 
-    public boolean isPlayStoreBadgeVisible() {
-        return playStoreBadge.isDisplayed();
+    public boolean isPlayStoreLinkVisible() {
+        return playStoreLnk.isDisplayed();
     }
 
     public String getCreateAnAccountLblText() {
@@ -86,7 +87,7 @@ public class LoginPage extends PageBase {
     }
 
     public String getCookiesDescriptionText() {
-        return cookiesDescription.getText();
+        return cookiesDescriptionLbl.getText();
     }
 
     public void enterEmail(String email) {
@@ -106,7 +107,7 @@ public class LoginPage extends PageBase {
     }
 
     public String getErrorMessage() {
-        return waitUntilVisibilityOfElement(errorLbl).getText();
+        return waitUntilElementIsLocatedAndDisplayed(errorLbl).getText();
     }
 
     public String getEmailFieldText() {
@@ -114,14 +115,14 @@ public class LoginPage extends PageBase {
     }
 
     public void clickAppsStoreLink() {
-        appStoreBadge.click();
+        appStoreLnk.click();
     }
 
     public void clickPlayStoreLink() {
-        playStoreBadge.click();
+        playStoreLnk.click();
     }
 
     public void clickContactUsLink() {
-        contactUs.click();
+        contactUsLnk.click();
     }
 }

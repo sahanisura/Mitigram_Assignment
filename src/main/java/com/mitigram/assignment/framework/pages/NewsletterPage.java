@@ -7,43 +7,46 @@ import org.openqa.selenium.support.FindBy;
 
 public class NewsletterPage extends PageBase {
     @FindBy(id = "newsletterUserMail")
-    private WebElement newsletterEmailTxt;
+    private WebElement emailTxt;
     @FindBy(className = "bfCustomSubmitButton")
-    private WebElement newsletterSubmitButton;
+    private WebElement submitButton;
     @FindBy(id = "newsletterErrorMessage")
-    private WebElement newsletterErrorMessage;
+    private WebElement errorLabel;
     @FindBy(className = "form-notification")
-    private WebElement newsletterMsgReceivedNotification;
+    private WebElement messageReceivedNotification;
 
     public NewsletterPage(WebDriver driver) {
         super(driver);
     }
 
     public void clickNewsletterSubmitButton() {
-        newsletterSubmitButton.click();
+        submitButton.click();
     }
 
     public void enterNewsletterEmail(String email) {
-        newsletterEmailTxt.sendKeys(email);
+        emailTxt.sendKeys(email);
     }
 
     public String getNewsletterErrorMessage() {
-        return newsletterErrorMessage.getText();
+        return waitUntilElementIsDisplayed(errorLabel).getText();
     }
 
     public String getNewsletterMsgReceivedNotificationHeader() {
-        return newsletterMsgReceivedNotification.findElement(By.tagName("h5")).getText();
+        return waitUntilElementIsDisplayed(messageReceivedNotification)
+                .findElement(By.tagName("h5")).getText();
     }
 
     public String getNewsletterMsgReceivedNotificationParagraph() {
-        return newsletterMsgReceivedNotification.findElement(By.tagName("p")).getText();
+        return waitUntilElementIsDisplayed(messageReceivedNotification)
+                .findElement(By.tagName("p")).getText();
     }
 
     public void clickNewsletterMsgReceivedNotificationDismissButton() {
-        newsletterMsgReceivedNotification.findElement(By.tagName("button")).click();
+        waitUntilElementIsDisplayed(messageReceivedNotification)
+                .findElement(By.tagName("button")).click();
     }
 
     public boolean isNewsletterMsgReceivedNotificationVisible() {
-        return !newsletterMsgReceivedNotification.getCssValue("display").equals("none");
+        return messageReceivedNotification.isDisplayed();
     }
 }

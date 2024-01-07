@@ -1,5 +1,6 @@
 package com.mitigram.assignment.framework.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,10 +14,10 @@ public class ForgotPasswordPage extends PageBase {
     private WebElement emailLinkBtn;
     @FindBy(linkText = "I already have an account")
     private WebElement alreadyHaveAnAccountLnk;
-    @FindBy(tagName = "p")
-    private WebElement paragraph;
-    @FindBy(linkText = "Back to Login")
-    private WebElement backToLoginLnk;
+
+    //Use 'By' locators for dynamically loaded elements
+    private final By paragraph = By.tagName("p");
+    private final By backToLoginLnk = By.linkText("Back to Login");
 
     public ForgotPasswordPage(WebDriver driver) {
         super(driver);
@@ -39,11 +40,11 @@ public class ForgotPasswordPage extends PageBase {
     }
 
     public String getParagraphText() {
-        return paragraph.getText();
+        return waitUntilElementIsLocatedAndDisplayed(paragraph).getText();
     }
 
     public void clickBackToLoginLink() {
-        backToLoginLnk.click();
+        waitUntilElementIsLocatedAndDisplayed(backToLoginLnk).click();
     }
 
     public String getEmailFieldValidationMessage() {

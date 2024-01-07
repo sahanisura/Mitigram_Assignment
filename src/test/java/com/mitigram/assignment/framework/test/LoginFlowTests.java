@@ -27,8 +27,8 @@ public class LoginFlowTests extends TestBase {
         loginPageSteps.validatePasswordFieldAppearance();
         loginPageSteps.validateLoginButtonText();
         loginPageSteps.validateForgotYourPasswordText();
-        loginPageSteps.validateAppStoreBadgeIsVisible();
-        loginPageSteps.validatePlayStoreBadgeIsVisible();
+        loginPageSteps.validateAppStoreLinkIsVisible();
+        loginPageSteps.validatePlayStoreLinkIsVisible();
         loginPageSteps.validateCreateAnAccountText("Would you like to create an account? Contact us");
         loginPageSteps.validateCookiesDescription("We use cookies to give you the best experience on our site.\n" +
                 "Cookies are files stored in your browser and are used by most websites to help personalise visitors web experience.\n" +

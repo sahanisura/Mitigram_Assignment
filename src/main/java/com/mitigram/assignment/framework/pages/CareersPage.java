@@ -56,7 +56,7 @@ public class CareersPage extends PageBase {
 
     public Map<String, String> getVisiblePositionsAndLocations() {
         return allOpenPositions.stream()
-                .filter(webElement -> !webElement.getAttribute("style").contains("display: none;"))
+                .filter(WebElement::isDisplayed)
                 .collect(Collectors.toMap(webElement -> webElement.findElement(By.tagName("a")).getText(),
                         webElement -> webElement.findElement(By.className("tm-subtitle")).getText()));
     }
@@ -68,17 +68,17 @@ public class CareersPage extends PageBase {
 
     public String getJobSummaryText() {
         checkClickedPositionNameNotNull();
-        return waitUntilVisibilityOfElement(getPosition(clickedPositionName), By.tagName("p")).getText();
+        return waitUntilChildElementIsDisplayed(getPosition(clickedPositionName), By.tagName("p")).getText();
     }
 
     public void clickLearnMoreButton() {
         checkClickedPositionNameNotNull();
-        getPosition(clickedPositionName).findElement(By.linkText("Learn more")).click();
+        waitUntilChildElementIsDisplayed(getPosition(clickedPositionName), By.linkText("Learn more")).click();
     }
 
     public void clickApplyForThisPositionButton() {
         checkClickedPositionNameNotNull();
-        getPosition(clickedPositionName).findElement(By.linkText("Apply for this position")).click();
+        waitUntilChildElementIsDisplayed(getPosition(clickedPositionName), By.linkText("Apply for this position")).click();
     }
 
     private void checkClickedPositionNameNotNull() {
@@ -105,6 +105,6 @@ public class CareersPage extends PageBase {
                 .filter(webElement -> !webElement.getAttribute("data-tag").equalsIgnoreCase(filterCriterion))
                 .toList();
 
-        waitUntilInvisibilityOfAllElements(positionsNeedToBeInvisible);
+        waitUntilElementsAreNotDisplayed(positionsNeedToBeInvisible);
     }
 }

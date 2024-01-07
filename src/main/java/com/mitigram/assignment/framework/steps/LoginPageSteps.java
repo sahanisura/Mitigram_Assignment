@@ -43,13 +43,13 @@ public class LoginPageSteps extends StepBase {
                 "Password reset link text is incorrect.");
     }
 
-    public void validateAppStoreBadgeIsVisible() {
-        softAssert.assertEquals(loginPage.isAppStoreBadgeVisible(), true,
+    public void validateAppStoreLinkIsVisible() {
+        softAssert.assertEquals(loginPage.isAppStoreLinkVisible(), true,
                 "App Store Badge is not visible.");
     }
 
-    public void validatePlayStoreBadgeIsVisible() {
-        softAssert.assertEquals(loginPage.isPlayStoreBadgeVisible(), true,
+    public void validatePlayStoreLinkIsVisible() {
+        softAssert.assertEquals(loginPage.isPlayStoreLinkVisible(), true,
                 "Play Store Badge is not visible.");
     }
 
