@@ -73,4 +73,8 @@ public class TestContext {
     public static WebDriver getDriver() {
         return testContextMap.get(Thread.currentThread().threadId()).driver;
     }
+
+    public static void cleanTestContext() {
+        testContextMap.remove(Thread.currentThread().threadId());
+    }
 }

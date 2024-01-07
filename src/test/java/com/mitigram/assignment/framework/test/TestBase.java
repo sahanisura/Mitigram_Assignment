@@ -38,6 +38,7 @@ public class TestBase {
     public void afterTest() {
         LoggerUtil.getInfoLogger().info("______________afterTest______________");
         getDriver().quit();
+        cleanTestContext();
     }
 
     private void closeMultipleTabs() {
