@@ -18,7 +18,6 @@ public class NewsletterTests extends TestBase {
     @Test
     public void testSubmitNewsletterEmailWithValidEmail() {
         commonSteps.navigateToPage("home");
-        commonSteps.navigateToPage("careers");
         newsletterSectionSteps.enterNewsletterEmail("validEmail@gmail.com");
         newsletterSectionSteps.clickNewsletterEmailSubmitButton();
         newsletterSectionSteps.validateNewsletterMsgReceivedNotificationHeader("THANK YOU!");
@@ -32,7 +31,6 @@ public class NewsletterTests extends TestBase {
     @Test
     public void testSubmitNewsletterEmailWithInvalidEmailFormat() {
         commonSteps.navigateToPage("home");
-        commonSteps.navigateToPage("careers");
         newsletterSectionSteps.enterNewsletterEmail("invalidFormat");
         newsletterSectionSteps.clickNewsletterEmailSubmitButton();
         newsletterSectionSteps.validateNewsletterErrorMessage("Email address is invalid.");
@@ -42,7 +40,6 @@ public class NewsletterTests extends TestBase {
     @Test
     public void testClickNewsletterSubmitButtonWithoutEmail() {
         commonSteps.navigateToPage("home");
-        commonSteps.navigateToPage("careers");
         newsletterSectionSteps.clickNewsletterEmailSubmitButton();
         newsletterSectionSteps.validateNewsletterErrorMessage("Email address is invalid.");
         assertAll();

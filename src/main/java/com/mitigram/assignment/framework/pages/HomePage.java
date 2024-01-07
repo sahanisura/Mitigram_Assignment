@@ -9,6 +9,8 @@ public class HomePage extends PageBase {
     private WebElement loginBtn;
     @FindBy(linkText = "Careers")
     private WebElement careersLnk;
+    @FindBy(css = "[aria-label=\"dismiss cookie message\"]")
+    private WebElement acceptCookiesBtn;
 
     //Other elements on the home page should be added here
 
@@ -22,6 +24,14 @@ public class HomePage extends PageBase {
 
     public void clickCareersLink() {
         careersLnk.click();
+    }
+
+    public void clickAcceptCookies() {
+        acceptCookiesBtn.click();
+    }
+
+    public boolean isAcceptCookiesButtonVisible() {
+        return acceptCookiesBtn.isDisplayed();
     }
 
     //Other home page actions should be added here

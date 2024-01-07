@@ -26,6 +26,8 @@ public class CareersPageTests extends TestBase {
         careersPageSteps.validateParagraphText("Mitigram is one of the most exciting FinTech companies " +
                 "in Europe. Our strong growth, combined with a client list of the world's leading corporates and banks, " +
                 "means we can offer exciting opportunities for anyone who joins us at this stage.");
+        commonSteps.scrollPage(1500);
+        commonSteps.validateNavigationMenuIsVisible();
         assertAll();
     }
 

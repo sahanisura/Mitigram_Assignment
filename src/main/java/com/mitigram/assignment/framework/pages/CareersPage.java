@@ -96,7 +96,7 @@ public class CareersPage extends PageBase {
             return actualPosition.get();
         } else {
             throw new NoSuchElementException("Position with name '"
-                    + actualPosition + "' not found");
+                    + positionName + "' not found");
         }
     }
 
