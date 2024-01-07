@@ -57,7 +57,7 @@ value attribute of the parameter tag in the
 Run the command `mvn test -Dtest.suite=SpecificTestsExecution`
 in a terminal from the project root directory. You have to update the value 
 attribute of the parameter tag in the
-`src/test/resources/TestParallelExecution.xml` file according to your browser.
+`src/test/resources/SpecificTestsExecution.xml` file according to your browser and add required test cases inside the classes and methods tags. A few test cases have been added to the SpecificTestsExecution.xml file. Please change it according to your requirements.
 ##### View Test Results Report
 Open the file `target/surefire-reports/index.html` in a web browser to view the HTML test results report.
 ##### View Test Logs
